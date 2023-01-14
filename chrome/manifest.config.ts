@@ -3,7 +3,7 @@ import packageJson from "../package.json";
 
 const manifest: chrome.runtime.Manifest = {
   manifest_version: 3,
-  name: packageJson.name,
+  name: "Bookmarker",
   version: packageJson.version,
   icons: {
     "16": "icon/icon-16.png",
@@ -11,6 +11,9 @@ const manifest: chrome.runtime.Manifest = {
     "48": "icon/icon-48.png",
     "128": "icon/icon-128.png",
   },
+  "action": {
+    default_popup: "index.html"
+  }
 };
 
 export default manifest;
