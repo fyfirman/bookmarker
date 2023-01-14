@@ -18,11 +18,7 @@ function Home() {
       </div>
       <h1>Bookmarker</h1>
       <div className="flex flex-col">
-        {!isLoading && data ? (
-          <span>Handcrafted by {data.data[0].name}</span>
-        ) : (
-          <Loading />
-        )}
+        <span>Handcrafted by fyfirman</span>
       </div>
       <p className="read-the-docs">Click on the the logos to learn more</p>
     </div>
