@@ -1,0 +1,11 @@
+{
+  "recommendations": [
+    "Cardinal90.multi-cursor-case-preserve",
+    "steoates.autoimport",
+    "formulahendry.auto-rename-tag",
+    "streetsidesoftware.code-spell-checker",
+    "dbaeumer.vscode-eslint",
+    "mhutchie.git-graph",
+    "bradlc.vscode-tailwindcss"
+  ]
+}
