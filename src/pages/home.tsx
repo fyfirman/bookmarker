@@ -1,10 +1,10 @@
 import reactLogo from "~/assets/react.svg";
 import "~/App.css";
-import { useExampleQuery } from "~/hooks/use-example-query";
 import Loading from "~/components/loading";
+import { useBookmarkQuery } from "~/hooks/use-bookmark-query";
 
 function Home() {
-  const { data, isLoading } = useExampleQuery();
+  const { data, isLoading } = useBookmarkQuery();
 
   return (
     <div className="App">
@@ -17,6 +17,7 @@ function Home() {
         </a>
       </div>
       <h1>Bookmarker</h1>
+      {!isLoading && data ? <code>{JSON.stringify(data)}</code> : <Loading />}
       <div className="flex flex-col">
         <span>Handcrafted by fyfirman</span>
       </div>

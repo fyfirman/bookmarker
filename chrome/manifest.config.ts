@@ -14,7 +14,7 @@ const manifest: chrome.runtime.Manifest = {
   "action": {
     default_title: "Open Bookmarker",
   },
-  "permissions": ["activeTab"],
+  "permissions": ["activeTab", "bookmarks"],
   "background": {
     "service_worker": "background-sw.js"
   }
