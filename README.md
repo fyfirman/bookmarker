@@ -1,8 +1,7 @@
 <div align="center">
-<h1>react-vite-template</h1>
+<h1>Bookmarker Extension</h1>
 
-<p>Easy React Vite Template</p>
-<p>Skip preparing, Start building your solution.</p>
+<p>Manage your bookmark easily</p>
 </div>
 
 ---
@@ -18,15 +17,16 @@
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
 - [Table of Contents](#table-of-contents)
-- [Features](#features)
-- [Usage](#usage)
+- [Tech Stack](#tech-stack)
 - [How to run](#how-to-run)
+  - [Development](#development)
+- [Known Issue](#known-issue)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 
 
-## Features
+## Tech Stack
 
 This template included most used libraries and pattern that commonly used, which are:
 
@@ -42,18 +42,29 @@ This template included most used libraries and pattern that commonly used, which
 [v] Zustand
 [v] Zod
 [v] TanStack Query
+[v] Joy UI 
+[v] date-fns 
 [] Jest (Soon)
 [] React Testing Library
-[] Common UI Component -> The UI library is too much to decide. There's no perfect library for all case, so to keep this template un-opinionated I will keep this part to be missing.  
-
-
-## Usage
-
-Click "Use this template" on this repository.
 
 
 ## How to run
 
+### Development
+
+To run in the development, you can run with this command:
+
+```
+pnpm build:watch
+```
+
+Then, install the extension by pointing to `/dist` folder. Every changes you did, you should reloading the pages or the extensions
+
+
+## Known Issue
+
+* This repository does not support HMR
+* Whenever you changed the `manifest.config.ts` you should reload the extension as well. However sometimes that is not help, because the `manifest.json` in `/dist` folder did not update. To solve that you should delete `/dist` folder and restart the build command.
 
 [license-badge]: https://img.shields.io/npm/l/react-vite-starter.svg?style=flat-square
 [license]: https://github.com/fyfirman/react-vite-starter/blob/master/LICENSE
