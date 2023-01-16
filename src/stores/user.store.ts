@@ -1,14 +1,20 @@
+import { Bookmark } from "~/interfaces/bookmark";
 import createStore from "~/libs/create-store";
+import deepFlatten from "~/libs/deep-flatten";
 
-interface User {
-  id: string;
-  name: string;
+interface BookmarkState {
+  bookmarks: Bookmark[];
+  getFlattenBookmarks: () => Bookmark[];
 }
 
-interface UserState {
-  users: User[];
-}
+export const useBookmarkStore = createStore<BookmarkState>(
+  "Bookmark",
+  (_, get) => ({
+    bookmarks: [],
+    getFlattenBookmarks() {
+      const bookmarks = get().bookmarks;
 
-export const useUserStore = createStore<UserState>("User", () => ({
-  users: [],
-}));
+      return deepFlatten(bookmarks);
+    },
+  })
+);

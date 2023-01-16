@@ -2,9 +2,12 @@ import reactLogo from "~/assets/react.svg";
 import "~/App.css";
 import Loading from "~/components/loading";
 import { useBookmarkQuery } from "~/hooks/use-bookmark-query";
+import BookmarkCard from "~/components/bookmark-card";
+import { useBookmarkStore } from "~/stores/user.store";
 
 function Home() {
-  const { data, isLoading } = useBookmarkQuery();
+  const { isLoading } = useBookmarkQuery();
+  const flattenedBookmarks = useBookmarkStore((s) => s.getFlattenBookmarks());
 
   return (
     <div className="App">
@@ -17,7 +20,13 @@ function Home() {
         </a>
       </div>
       <h1>Bookmarker</h1>
-      {!isLoading && data ? <code>{JSON.stringify(data)}</code> : <Loading />}
+      {!isLoading ? (
+        flattenedBookmarks.map((bookmark) => (
+          <BookmarkCard key={bookmark.id} {...bookmark} />
+        ))
+      ) : (
+        <Loading />
+      )}
       <div className="flex flex-col">
         <span>Handcrafted by fyfirman</span>
       </div>
