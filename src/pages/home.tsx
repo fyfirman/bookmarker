@@ -1,14 +1,8 @@
 import reactLogo from "~/assets/react.svg";
 import "~/App.css";
-import Loading from "~/components/loading";
-import { useBookmarkQuery } from "~/hooks/use-bookmark-query";
-import BookmarkCard from "~/components/bookmark-card";
-import { useBookmarkStore } from "~/stores/user.store";
+import BookmarkGrid from "~/components/bookmark-grid";
 
 function Home() {
-  const { isLoading } = useBookmarkQuery();
-  const flattenedBookmarks = useBookmarkStore((s) => s.getFlattenBookmarks());
-
   return (
     <div className="App">
       <div className="flex flex-row justify-center">
@@ -19,14 +13,8 @@ function Home() {
           <img alt="React logo" className="logo react" src={reactLogo} />
         </a>
       </div>
-      <h1>Bookmarker</h1>
-      {!isLoading ? (
-        flattenedBookmarks.map((bookmark) => (
-          <BookmarkCard key={bookmark.id} {...bookmark} />
-        ))
-      ) : (
-        <Loading />
-      )}
+      <h1 className="mb-4">Bookmarker</h1>
+      <BookmarkGrid />
       <div className="flex flex-col">
         <span>Handcrafted by fyfirman</span>
       </div>

@@ -1,3 +1,4 @@
+import { format } from "date-fns";
 import AspectRatio from "@mui/joy/AspectRatio";
 import Card from "@mui/joy/Card";
 import CardOverflow from "@mui/joy/CardOverflow";
@@ -9,7 +10,14 @@ interface BookmarkCardProps extends Bookmark {}
 
 const BookmarkCard = ({ title, url, dateAdded }: BookmarkCardProps) => {
   return (
-    <Card sx={{ width: 320 }} variant="outlined">
+    <Card
+      className="hover:cursor-pointer"
+      onClick={() => {
+        window.open(url, "_blank");
+      }}
+      sx={{ width: 320 }}
+      variant="outlined"
+    >
       <CardOverflow>
         <AspectRatio ratio="2">
           <img
@@ -23,7 +31,7 @@ const BookmarkCard = ({ title, url, dateAdded }: BookmarkCardProps) => {
       <Typography level="h2" sx={{ fontSize: "md", mt: 2 }}>
         {title}
       </Typography>
-      <Typography level="body2" sx={{ mt: 0.5, mb: 2 }}>
+      <Typography level="body2" overflow="clip" sx={{ mt: 0.5, mb: 2 }}>
         {url}
       </Typography>
       <Divider />
@@ -37,19 +45,14 @@ const BookmarkCard = ({ title, url, dateAdded }: BookmarkCardProps) => {
         }}
         variant="soft"
       >
-        <Typography
-          level="body3"
-          sx={{ fontWeight: "md", color: "text.secondary" }}
-        >
-          6.3k views
-        </Typography>
-        <Divider orientation="vertical" />
-        <Typography
-          level="body3"
-          sx={{ fontWeight: "md", color: "text.secondary" }}
-        >
-          {dateAdded}
-        </Typography>
+        {dateAdded ? (
+          <Typography
+            level="body3"
+            sx={{ fontWeight: "md", color: "text.secondary" }}
+          >
+            {format(dateAdded, "dd MMM yyyy")}
+          </Typography>
+        ) : null}
       </CardOverflow>
     </Card>
   );

@@ -15,6 +15,7 @@ specifiers:
   autoprefixer: ^10.4.13
   axios: ^1.2.2
   css: ^3.0.0
+  date-fns: ^2.29.3
   eslint: ^8.31.0
   eslint-config-fyfirman: ^0.2.0
   eslint-import-resolver-typescript: ^3.5.3
@@ -38,6 +39,7 @@ dependencies:
   '@mui/joy': 5.0.0-alpha.62_5c94f60a4347d0fa7a0fa01f8a77c83b
   '@tanstack/react-query': 4.22.0_react-dom@18.2.0+react@18.2.0
   axios: 1.2.2
+  date-fns: 2.29.3
   import: 0.0.6
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
@@ -1543,6 +1545,11 @@ packages:
   /damerau-levenshtein/1.0.8:
     resolution: {integrity: sha512-sdQSFB7+llfUcQHUQO3+B8ERRj0Oa4w9POWMI/puGtuf7gFywGmkaLCElnudfTiKZV+NvHqL0ifzdrI8Ro7ESA==}
     dev: true
+
+  /date-fns/2.29.3:
+    resolution: {integrity: sha512-dDCnyH2WnnKusqvZZ6+jA1O51Ibt8ZMRNkDZdyAyK4YfbDwa/cEmuztzG5pk6hqlp9aSBPYcjOlktquahGwGeA==}
+    engines: {node: '>=0.11'}
+    dev: false
 
   /debug/3.2.7:
     resolution: {integrity: sha512-CFjzYYAi4ThfiQvizrFQevTTXHtnCqWfe7x1AhgEscTz6ZbLbfoLRLPugTQyBth6f8ZERVUSyWHFD/7Wu4t1XQ==}
