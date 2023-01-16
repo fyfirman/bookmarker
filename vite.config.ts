@@ -14,6 +14,10 @@ export default defineConfig({
   plugins: [createManifest(), copyIcon(), react()],
   build: {
     rollupOptions: {
+      input: [
+        path.resolve(__dirname, "./index.html"),
+        path.resolve(__dirname, "./src/scripts/background-sw.ts"),
+      ],
       output: {
         entryFileNames: "[name].js",
         chunkFileNames: "chunks/[name].js",

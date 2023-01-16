@@ -12,7 +12,11 @@ const manifest: chrome.runtime.Manifest = {
     "128": "icon/icon-128.png",
   },
   "action": {
-    default_popup: "index.html"
+    default_title: "Open Bookmarker",
+  },
+  "permissions": ["activeTab"],
+  "background": {
+    "service_worker": "background-sw.js"
   }
 };
 
