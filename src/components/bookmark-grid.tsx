@@ -15,7 +15,7 @@ const BookmarkGrid: React.FC<BookmarkGridProps> = () => {
     <Grid container spacing={2} sx={{ flexGrow: 1 }}>
       {!isLoading ? (
         flattenedBookmarks.map((bookmark) => (
-          <Grid key={bookmark.id} xs={3}>
+          <Grid key={bookmark.id} md={3} sm={6} xl={2} xs={12}>
             <BookmarkCard {...bookmark} />
           </Grid>
         ))

@@ -15,7 +15,6 @@ const BookmarkCard = ({ title, url, dateAdded }: BookmarkCardProps) => {
       onClick={() => {
         window.open(url, "_blank");
       }}
-      sx={{ width: 320 }}
       variant="outlined"
     >
       <CardOverflow>

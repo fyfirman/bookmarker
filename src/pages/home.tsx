@@ -1,10 +1,9 @@
 import reactLogo from "~/assets/react.svg";
-import "~/App.css";
 import BookmarkGrid from "~/components/bookmark-grid";
 
 function Home() {
   return (
-    <div className="App">
+    <div className="px-8">
       <div className="flex flex-row justify-center">
         <a href="https://vitejs.dev" rel="noreferrer" target="_blank">
           <img alt="Vite logo" className="logo" src="/vite.svg" />
