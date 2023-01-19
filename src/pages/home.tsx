@@ -5,7 +5,7 @@ function Home() {
   return (
     <div className="bg-gray-50">
       <Navbar />
-      <div className="px-8">
+      <div className="mx-auto max-w-[1280px] px-8">
         <BookmarkGrid />
         <div className="flex flex-col">
           <span>Handcrafted by fyfirman</span>
