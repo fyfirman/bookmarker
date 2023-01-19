@@ -50,6 +50,8 @@ This template included most used libraries and pattern that commonly used, which
 
 ## How to run
 
+Before you run this project you should create bookmark response at `src/mocks/responses/get-bookmarks.json`. The file is ignored in git because I do not want to expose my bookmarks.
+
 ### Development
 
 To run in the development, you can run with this command:
