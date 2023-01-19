@@ -25,3 +25,5 @@ public/icon
 *.njsproj
 *.sln
 *.sw?
+
+src/mocks/responses/get-bookmarks.json
