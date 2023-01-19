@@ -2,8 +2,6 @@ import { format } from "date-fns";
 import AspectRatio from "@mui/joy/AspectRatio";
 import Card from "@mui/joy/Card";
 import CardOverflow from "@mui/joy/CardOverflow";
-import Divider from "@mui/joy/Divider";
-import Typography from "@mui/joy/Typography";
 import { Bookmark } from "~/interfaces/bookmark";
 
 interface BookmarkCardProps extends Bookmark {}
@@ -15,10 +13,15 @@ const BookmarkCard = ({ title, url, dateAdded }: BookmarkCardProps) => {
       onClick={() => {
         window.open(url, "_blank");
       }}
+      sx={{
+        borderWidth: 0,
+        boxShadow:
+          "0px 20px 25px rgba(0, 0, 0, 0.03), 0px 10px 10px rgba(0, 0, 0, 0.04);",
+      }}
       variant="outlined"
     >
       <CardOverflow>
-        <AspectRatio ratio="2">
+        <AspectRatio ratio="1.91">
           <img
             alt=""
             loading="lazy"
@@ -27,32 +30,17 @@ const BookmarkCard = ({ title, url, dateAdded }: BookmarkCardProps) => {
           />
         </AspectRatio>
       </CardOverflow>
-      <Typography level="h2" sx={{ fontSize: "md", mt: 2 }}>
-        {title}
-      </Typography>
-      <Typography level="body2" overflow="clip" sx={{ mt: 0.5, mb: 2 }}>
-        {url}
-      </Typography>
-      <Divider />
-      <CardOverflow
-        sx={{
-          display: "flex",
-          gap: 1.5,
-          py: 1.5,
-          px: "var(--Card-padding)",
-          bgcolor: "background.level1",
-        }}
-        variant="soft"
-      >
-        {dateAdded ? (
-          <Typography
-            level="body3"
-            sx={{ fontWeight: "md", color: "text.secondary" }}
-          >
-            {format(dateAdded, "dd MMM yyyy")}
-          </Typography>
-        ) : null}
-      </CardOverflow>
+      <div className="flex flex-col gap-2">
+        <h2 className="mt-2 text-base tracking-tighter text-zinc-900 line-clamp-2">
+          {title}
+        </h2>
+        <span className="text-sm font-light tracking-tighter text-zinc-800 line-clamp-1">
+          {url}
+        </span>
+        <span className="text-sm font-light tracking-tighter text-zinc-800">
+          {dateAdded ? format(dateAdded, "d MMM yyyy") : ""}
+        </span>
+      </div>
     </Card>
   );
 };
