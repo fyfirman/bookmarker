@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import errorHandler from "~/helpers/error-handler";
 import chromeService from "~/services/chrome-service";
-import { useBookmarkStore } from "~/stores/user.store";
+import { useBookmarkStore } from "~/stores/bookmark.store";
 
 export const useBookmarkQuery = () =>
   useQuery({

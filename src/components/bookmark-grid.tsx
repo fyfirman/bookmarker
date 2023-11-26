@@ -1,7 +1,7 @@
 import React from "react";
 import Grid from "@mui/joy/Grid";
 import { useBookmarkQuery } from "~/hooks/use-bookmark-query";
-import { SortOrder, useBookmarkStore } from "~/stores/user.store";
+import { SortOrder, useBookmarkStore } from "~/stores/bookmark.store";
 import BookmarkCard from "./bookmark-card";
 import Loading from "./loading";
 

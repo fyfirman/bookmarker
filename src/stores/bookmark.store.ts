@@ -14,6 +14,7 @@ interface SortFlattenBookmark {
 interface BookmarkState {
   bookmarks: Bookmark[];
   getFlattenBookmarks: (sort?: SortFlattenBookmark) => Bookmark[];
+  getTreeById: (bookmarkId: Bookmark["id"]) => Bookmark | undefined;
 }
 
 export const useBookmarkStore = createStore<BookmarkState>(
@@ -21,7 +22,7 @@ export const useBookmarkStore = createStore<BookmarkState>(
   (_, get) => ({
     bookmarks: [],
     getFlattenBookmarks(sort) {
-      const bookmarks = get().bookmarks;
+      const { bookmarks } = get();
 
       const flattenedBookmarks = deepFlatten(bookmarks);
 
@@ -53,6 +54,11 @@ export const useBookmarkStore = createStore<BookmarkState>(
       }
 
       return flattenedBookmarks;
+    },
+    getTreeById(bookmarkId: Bookmark["id"]) {
+      const { bookmarks } = get();
+
+      return bookmarks.find((tree) => tree.id === bookmarkId);
     },
   })
 );
