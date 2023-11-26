@@ -114,7 +114,10 @@ export const useBookmarkStore = createStore<BookmarkState>(
 
       return {
         title: data.title,
-        ...groupedData,
+        folders: groupedData.folders,
+        bookmarks: groupedData.bookmarks.sort((a, b) =>
+          a.title.localeCompare(b.title)
+        ),
       };
     },
   })
