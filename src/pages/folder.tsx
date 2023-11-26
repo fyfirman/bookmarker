@@ -24,13 +24,15 @@ const FolderPage: React.FC<FolderPageProps> = () => {
   return (
     <div>
       <h2>{bookmarkTree.title}</h2>
-      {bookmarkTree.children?.map((child) =>
-        child.url ? (
-          <BookmarkCard key={child.id} {...child} />
-        ) : (
-          <BookmarkFolder key={child.id} folder={child} />
-        )
-      )}
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-3 lg:grid-cols-4">
+        {bookmarkTree.children?.map((child) =>
+          child.url ? (
+            <BookmarkCard key={child.id} {...child} />
+          ) : (
+            <BookmarkFolder key={child.id} folder={child} />
+          )
+        )}
+      </div>
     </div>
   );
 };

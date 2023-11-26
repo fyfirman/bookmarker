@@ -9,11 +9,7 @@ interface BookmarkGridProps {}
 const BookmarkGrid: React.FC<BookmarkGridProps> = () => {
   const { isLoading } = useBookmarkQuery();
 
-  return (
-    <Grid container spacing={4} sx={{ flexGrow: 1 }}>
-      {!isLoading ? <Outlet /> : <Loading />}
-    </Grid>
-  );
+  return <div>{!isLoading ? <Outlet /> : <Loading />}</div>;
 };
 
 export default BookmarkGrid;
