@@ -1,11 +1,24 @@
-import AppProvider from "./app-provider";
-import Home from "./pages/home";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "@fontsource/public-sans";
+import Home from "~/pages/home";
+import FolderPage from "~/pages/folder";
+import AppProvider from "~/app-provider";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Home />,
+  },
+  {
+    path: "/:id",
+    element: <FolderPage />,
+  },
+]);
 
 function App() {
   return (
     <AppProvider>
-      <Home />
+      <RouterProvider router={router} />
     </AppProvider>
   );
 }

@@ -20,6 +20,7 @@
 - [Tech Stack](#tech-stack)
 - [How to run](#how-to-run)
   - [Development](#development)
+  - [To Do](#to-do)
 - [Known Issue](#known-issue)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -59,6 +60,10 @@ To run in the development, you can run with this command:
 ```
 pnpm build:watch
 ```
+
+### To Do
+
+- Utilize foldering and url
 
 Then, install the extension by pointing to `/dist` folder. Every changes you did, you should reloading the pages or the extensions
 
