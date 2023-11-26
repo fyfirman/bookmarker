@@ -2,7 +2,6 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import BookmarkCard from "~/components/bookmark-card";
 import BookmarkFolder from "~/components/bookmark-folder";
-import { useBookmarkQuery } from "~/hooks/use-bookmark-query";
 import { useBookmarkStore } from "~/stores/bookmark.store";
 
 interface FolderPageProps {}
@@ -14,14 +13,9 @@ const FolderPage: React.FC<FolderPageProps> = () => {
     path = "0";
   }
 
-  const { isLoading } = useBookmarkQuery();
   const bookmarkTree = useBookmarkStore((s) =>
     s.getBookmarkByPath(path as string)
   );
-
-  if (isLoading) {
-    return <div>Loading</div>;
-  }
 
   if (!bookmarkTree) {
     throw new Error("Bookmark tree not found");

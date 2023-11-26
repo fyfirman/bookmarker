@@ -2,11 +2,13 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "@fontsource/public-sans";
 import FolderPage from "~/pages/folder";
 import AppProvider from "~/app-provider";
+import BookmarkGrid from "~/components/bookmark-grid";
 
 const router = createBrowserRouter([
   {
     path: "/*",
-    element: <FolderPage />,
+    element: <BookmarkGrid />,
+    children: [{ path: "*", Component: FolderPage }],
   },
 ]);
 
