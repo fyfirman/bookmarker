@@ -1,4 +1,5 @@
 import { Bookmark } from "~/interfaces/bookmark";
+import { findNodeById } from "~/libs/bookmark-chrome";
 import createStore from "~/libs/create-store";
 import deepFlatten from "~/libs/deep-flatten";
 
@@ -14,12 +15,12 @@ interface SortFlattenBookmark {
 interface BookmarkState {
   bookmarks: Bookmark[];
   getFlattenBookmarks: (sort?: SortFlattenBookmark) => Bookmark[];
-  getTreeById: (bookmarkId: Bookmark["id"]) => Bookmark | undefined;
+  getBookmarkByPath: (path: string) => Bookmark | undefined;
 }
 
 export const useBookmarkStore = createStore<BookmarkState>(
   "Bookmark",
-  (_, get) => ({
+  (set, get) => ({
     bookmarks: [],
     getFlattenBookmarks(sort) {
       const { bookmarks } = get();
@@ -55,10 +56,24 @@ export const useBookmarkStore = createStore<BookmarkState>(
 
       return flattenedBookmarks;
     },
-    getTreeById(bookmarkId: Bookmark["id"]) {
+    getBookmarkByPath(path: string) {
       const { bookmarks } = get();
 
-      return bookmarks.find((tree) => tree.id === bookmarkId);
+      const ids = path.split("/").filter((id) => id !== "");
+      if (bookmarks.length === 0) {
+        return undefined;
+      }
+
+      let currentNode: Bookmark | undefined = bookmarks[0];
+
+      for (const id of ids) {
+        currentNode = findNodeById(id, currentNode);
+        if (!currentNode) {
+          break;
+        }
+      }
+
+      return currentNode;
     },
   })
 );
