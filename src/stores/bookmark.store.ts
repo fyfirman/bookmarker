@@ -16,6 +16,17 @@ interface BookmarkState {
   bookmarks: Bookmark[];
   getFlattenBookmarks: (sort?: SortFlattenBookmark) => Bookmark[];
   getBookmarkByPath: (path: string) => Bookmark | undefined;
+  separateFoldersAndBookmarks(bookmarks: Bookmark[]): {
+    folders: Bookmark[];
+    bookmarks: Bookmark[];
+  };
+  getForFolderPage(path: string):
+    | {
+        title: string;
+        folders: Bookmark[];
+        bookmarks: Bookmark[];
+      }
+    | undefined;
 }
 
 export const useBookmarkStore = createStore<BookmarkState>(
@@ -77,6 +88,34 @@ export const useBookmarkStore = createStore<BookmarkState>(
       }
 
       return currentNode;
+    },
+    separateFoldersAndBookmarks(nodes: Bookmark[]) {
+      const folders: Bookmark[] = [];
+      const bookmarks: Bookmark[] = [];
+
+      nodes.forEach((node) => {
+        if ("url" in node) {
+          bookmarks.push(node);
+        } else {
+          folders.push(node);
+        }
+      });
+
+      return { folders, bookmarks };
+    },
+    getForFolderPage(path: string) {
+      const data = this.getBookmarkByPath(path);
+
+      if (!data?.children) {
+        return undefined;
+      }
+
+      const groupedData = this.separateFoldersAndBookmarks(data.children);
+
+      return {
+        title: data.title,
+        ...groupedData,
+      };
     },
   })
 );
