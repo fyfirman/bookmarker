@@ -9,13 +9,15 @@ interface FolderPageProps {}
 
 const FolderPage: React.FC<FolderPageProps> = () => {
   const params = useParams();
-  const path = params["*"];
+  let path = params["*"];
   if (!path) {
-    throw new Error("Undefined id");
+    path = "0";
   }
 
   const { isLoading } = useBookmarkQuery();
-  const bookmarkTree = useBookmarkStore((s) => s.getBookmarkByPath(path));
+  const bookmarkTree = useBookmarkStore((s) =>
+    s.getBookmarkByPath(path as string)
+  );
 
   if (isLoading) {
     return <div>Loading</div>;

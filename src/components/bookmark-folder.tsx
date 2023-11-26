@@ -8,9 +8,16 @@ interface BookmarkFolderProps {
 
 const BookmarkFolder: React.FC<BookmarkFolderProps> = ({ folder }) => {
   const location = useLocation();
+
+  let url = `${location.pathname}/${folder.id}`;
+
+  if (location.pathname === "/") {
+    url = `/${folder.id}`;
+  }
+
   return (
     <div className="bookmark-folder">
-      <Link to={`${location.pathname}/${folder.id}`}>{folder.title}</Link>
+      <Link to={url}>{folder.title}</Link>
     </div>
   );
 };

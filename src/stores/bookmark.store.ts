@@ -59,7 +59,10 @@ export const useBookmarkStore = createStore<BookmarkState>(
     getBookmarkByPath(path: string) {
       const { bookmarks } = get();
 
-      const ids = path.split("/").filter((id) => id !== "");
+      const ids = path
+        .replace("0/", "")
+        .split("/")
+        .filter((id) => id !== "");
       if (bookmarks.length === 0) {
         return undefined;
       }

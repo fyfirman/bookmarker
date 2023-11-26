@@ -1,31 +1,17 @@
 import React from "react";
 import Grid from "@mui/joy/Grid";
 import { useBookmarkQuery } from "~/hooks/use-bookmark-query";
-import { SortOrder, useBookmarkStore } from "~/stores/bookmark.store";
-import BookmarkCard from "./bookmark-card";
+import { Outlet } from "react-router-dom";
 import Loading from "./loading";
 
 interface BookmarkGridProps {}
 
 const BookmarkGrid: React.FC<BookmarkGridProps> = () => {
   const { isLoading } = useBookmarkQuery();
-  const flattenedBookmarks = useBookmarkStore((s) =>
-    s.getFlattenBookmarks({
-      dateAdded: SortOrder.Ascending,
-    })
-  );
 
   return (
     <Grid container spacing={4} sx={{ flexGrow: 1 }}>
-      {!isLoading ? (
-        flattenedBookmarks.map((bookmark) => (
-          <Grid key={bookmark.id} md={3} sm={6} xs={12}>
-            <BookmarkCard {...bookmark} />
-          </Grid>
-        ))
-      ) : (
-        <Loading />
-      )}
+      {!isLoading ? <Outlet /> : <Loading />}
     </Grid>
   );
 };
