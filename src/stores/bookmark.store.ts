@@ -12,16 +12,19 @@ interface SortFlattenBookmark {
   dateAdded: SortOrder;
 }
 
+type Breadcrumb = { path: string; title: string };
+
 interface BookmarkState {
   bookmarks: Bookmark[];
   getFlattenBookmarks: (sort?: SortFlattenBookmark) => Bookmark[];
-  getBookmarkByPath: (path: string) => Bookmark | undefined;
+  getBookmarkByPath: (path: string) => [Bookmark | undefined, Breadcrumb[]];
   separateFoldersAndBookmarks(bookmarks: Bookmark[]): {
     folders: Bookmark[];
     bookmarks: Bookmark[];
   };
   getForFolderPage(path: string):
     | {
+        breadcrumbs: Breadcrumb[];
         title: string;
         folders: Bookmark[];
         bookmarks: Bookmark[];
@@ -79,15 +82,22 @@ export const useBookmarkStore = createStore<BookmarkState>(
       }
 
       let currentNode: Bookmark | undefined = bookmarks[0];
+      const breadcrumbs: Breadcrumb[] = [];
 
       for (const id of ids) {
         currentNode = findNodeById(id, currentNode);
         if (!currentNode) {
           break;
         }
+        breadcrumbs.push({
+          path: !!breadcrumbs.at(-1)
+            ? `${breadcrumbs.at(-1)!.path}/${currentNode.id}`
+            : currentNode.id,
+          title: currentNode.title,
+        });
       }
 
-      return currentNode;
+      return [currentNode, breadcrumbs];
     },
     separateFoldersAndBookmarks(nodes: Bookmark[]) {
       const folders: Bookmark[] = [];
@@ -104,7 +114,7 @@ export const useBookmarkStore = createStore<BookmarkState>(
       return { folders, bookmarks };
     },
     getForFolderPage(path: string) {
-      const data = this.getBookmarkByPath(path);
+      const [data, breadcrumbs] = this.getBookmarkByPath(path);
 
       if (!data?.children) {
         return undefined;
@@ -113,6 +123,7 @@ export const useBookmarkStore = createStore<BookmarkState>(
       const groupedData = this.separateFoldersAndBookmarks(data.children);
 
       return {
+        breadcrumbs,
         title: data.title,
         folders: groupedData.folders,
         bookmarks: groupedData.bookmarks.sort((a, b) =>
