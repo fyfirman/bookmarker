@@ -40,7 +40,6 @@ const BookmarkFolder: React.FC<BookmarkFolderProps> = ({ folder }) => {
 
   return (
     <div
-      // eslint-disable-next-line tailwindcss/no-custom-classname
       className={clsx(
         `rounded-lg shadow-lg min-h-[250px] bg-gradient-to-br`,
         `${gradient.from}`,

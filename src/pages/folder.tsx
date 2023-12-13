@@ -20,8 +20,8 @@ const FolderPage: React.FC<FolderPageProps> = () => {
   }
 
   return (
-    <div className="max-w-[1400px]">
-      <h2>{data.title}</h2>
+    <div className="w-[1400px] pt-8">
+      <h2 className="mb-8 font-extralight text-xl">{data.title}</h2>
       <div className="grid grid-cols-1 gap-4 md:grid-cols-3 lg:grid-cols-4">
         {data.folders.map((child) => (
           <BookmarkFolder key={child.id} folder={child} />
