@@ -9,8 +9,8 @@ interface FolderPageProps {}
 
 const FolderPage: React.FC<FolderPageProps> = () => {
   const params = useParams();
-  let path = params["*"];
-  if (!path) {
+  let path = params["*"]?.replace("index.html/", "");
+  if (!path || path === "index.html") {
     path = "0";
   }
 

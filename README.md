@@ -20,6 +20,7 @@
 - [Tech Stack](#tech-stack)
 - [How to run](#how-to-run)
   - [Development](#development)
+- [How to build](#how-to-build)
   - [To Do](#to-do)
 - [Known Issue](#known-issue)
 
@@ -60,6 +61,16 @@ To run in the development, you can run with this command:
 ```
 pnpm build:watch
 ```
+
+## How to build
+
+1. Run this commands
+
+```
+pnpm build
+```
+
+2. 
 
 ### To Do
 
