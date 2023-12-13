@@ -6,6 +6,7 @@ module.exports = {
   ],
   plugins: ["@tanstack/query", "tailwindcss"],
   rules: {
+    "tailwindcss/classnames-order": "off",
     // your overrides
   },
 };

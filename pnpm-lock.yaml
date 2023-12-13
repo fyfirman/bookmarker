@@ -16,6 +16,7 @@ specifiers:
   '@vitejs/plugin-react-swc': ^3.0.0
   autoprefixer: ^10.4.13
   axios: ^1.2.2
+  clsx: ^2.0.0
   css: ^3.0.0
   date-fns: ^2.29.3
   eslint: ^8.31.0
@@ -46,6 +47,7 @@ dependencies:
   '@tailwindcss/line-clamp': 0.4.2_tailwindcss@3.2.4
   '@tanstack/react-query': 4.22.0_react-dom@18.2.0+react@18.2.0
   axios: 1.2.2
+  clsx: 2.0.0
   date-fns: 2.29.3
   import: 0.0.6
   react: 18.2.0
@@ -1478,6 +1480,11 @@ packages:
 
   /clsx/1.2.1:
     resolution: {integrity: sha512-EcR6r5a8bj6pu3ycsa/E/cKVGuTgZJZdsyUYHOksG/UHIiKfjxzRxYJpyVBwYaQeOvghal9fcc4PidlgzugAQg==}
+    engines: {node: '>=6'}
+    dev: false
+
+  /clsx/2.0.0:
+    resolution: {integrity: sha512-rQ1+kcj+ttHG0MKVGBUXwayCCF1oh39BF5COIpRzuCEv8Mwjv0XucrI2ExNTOn9IlLifGClWQcU9BrZORvtw6Q==}
     engines: {node: '>=6'}
     dev: false
 
