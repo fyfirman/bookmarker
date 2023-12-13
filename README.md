@@ -63,7 +63,6 @@ pnpm build:watch
 
 ### To Do
 
-- Utilize foldering and url
 
 Then, install the extension by pointing to `/dist` folder. Every changes you did, you should reloading the pages or the extensions
 

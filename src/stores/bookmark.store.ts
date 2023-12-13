@@ -17,7 +17,9 @@ type Breadcrumb = { path: string; title: string };
 interface BookmarkState {
   bookmarks: Bookmark[];
   getFlattenBookmarks: (sort?: SortFlattenBookmark) => Bookmark[];
-  getBookmarkByPath: (path: string) => [Bookmark | undefined, Breadcrumb[]];
+  getBookmarkByPath: (
+    path: string
+  ) => [Bookmark | undefined, Breadcrumb[]] | undefined;
   separateFoldersAndBookmarks(bookmarks: Bookmark[]): {
     folders: Bookmark[];
     bookmarks: Bookmark[];
@@ -114,7 +116,13 @@ export const useBookmarkStore = createStore<BookmarkState>(
       return { folders, bookmarks };
     },
     getForFolderPage(path: string) {
-      const [data, breadcrumbs] = this.getBookmarkByPath(path);
+      const res = this.getBookmarkByPath(path);
+
+      if (!res) {
+        return undefined;
+      }
+
+      const [data, breadcrumbs] = res;
 
       if (!data?.children) {
         return undefined;
