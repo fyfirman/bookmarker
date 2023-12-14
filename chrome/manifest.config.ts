@@ -17,7 +17,10 @@ const manifest: chrome.runtime.Manifest = {
   "permissions": ["activeTab", "bookmarks"],
   "background": {
     "service_worker": "background-sw.js"
-  }
+  },
+  "chrome_url_overrides": {
+    "newtab": "index.html"
+  },
 };
 
 export default manifest;
